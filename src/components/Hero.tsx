@@ -130,6 +130,7 @@ export default function Hero() {
                 width={asset.main.width}
                 height={asset.main.height}
                 style={{ zIndex }}
+                priority={i === 0}
                 className={cn(
                   'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
                   isFront && isPlaying && 'hero-curtain-reveal-main',
@@ -152,8 +153,8 @@ export default function Hero() {
               key={i}
               src={asset.sub.src}
               alt={asset.sub.alt}
-              width={asset.main.width}
-              height={asset.main.height}
+              width={asset.sub.width}
+              height={asset.sub.height}
               style={{ zIndex }}
               className={cn(
                 'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
