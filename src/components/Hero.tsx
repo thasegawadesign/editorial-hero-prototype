@@ -78,7 +78,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className={cn('relative w-full h-[80vh]')}>
+      <div className={cn('relative w-full h-screen')}>
         {assets.map((asset, i) => {
           const zIndex = zIndexByAssetIndex.get(i) ?? 1;
           return (
@@ -89,7 +89,25 @@ export default function Hero() {
               width={asset.main.width}
               height={asset.main.height}
               style={{ zIndex }}
-              className={cn('absolute inset-0 w-full h-full object-cover')}
+              className={cn(
+                'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh]',
+              )}
+            />
+          );
+        })}
+        {assets.map((asset, i) => {
+          const zIndex = zIndexByAssetIndex.get(i) ?? 1;
+          return (
+            <Image
+              key={i}
+              src={asset.sub.src}
+              alt={asset.sub.alt}
+              width={asset.main.width}
+              height={asset.main.height}
+              style={{ zIndex }}
+              className={cn(
+                'absolute bottom-0 left-0 right-0 mx-auto lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
+              )}
             />
           );
         })}
