@@ -81,7 +81,7 @@ export default function Hero() {
       <div className={cn('relative w-full h-screen overflow-x-hidden')}>
         <h1
           className={cn(
-            'absolute top-[4vw] inset-x-0 mx-auto w-[94vw] lg:top-[1vw] lg:w-[96vw] h-fit z-10',
+            'absolute top-[4vw] inset-x-0 mx-auto w-[94vw] lg:top-[1vw] lg:w-[98vw] h-fit z-20',
           )}
         >
           <Image
@@ -97,7 +97,7 @@ export default function Hero() {
         </h1>
         <p
           className={cn(
-            'absolute bottom-[54vw] text-white left-0 text-[clamp(1.4rem,8px+4vw,6rem)] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] font-light tracking-wide right-0 mx-auto w-[92vw] lg:w-[34vw] lg:leading-[1.2] lg:ml-4 lg:bottom-32 h-fit z-10',
+            'absolute bottom-[54vw] text-white left-0 text-[clamp(1.4rem,8px+4vw,6rem)] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] font-light tracking-wide right-0 mx-auto w-[92vw] lg:w-[34vw] lg:leading-[1.2] lg:ml-[1vw] lg:bottom-32 h-fit z-20',
           )}
         >
           Our architecture studio designs one-of-a-kind residences in rare
@@ -106,21 +106,28 @@ export default function Hero() {
         {assets.map((asset, i) => {
           const zIndex = zIndexByAssetIndex.get(i) ?? 1;
           return (
-            <Image
-              key={i}
-              src={asset.main.src}
-              alt={asset.main.alt}
-              width={asset.main.width}
-              height={asset.main.height}
-              style={{ zIndex }}
-              className={cn(
-                'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
-              )}
-            />
+            <>
+              <Image
+                key={i}
+                src={asset.main.src}
+                alt={asset.main.alt}
+                width={asset.main.width}
+                height={asset.main.height}
+                style={{ zIndex }}
+                className={cn(
+                  'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
+                )}
+              />
+              <div
+                className={cn(
+                  'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
+                )}
+              />
+            </>
           );
         })}
         {assets.map((asset, i) => {
-          const zIndex = zIndexByAssetIndex.get(i) ?? 1;
+          const zIndex = (zIndexByAssetIndex.get(i) ?? 1) + 20;
           return (
             <Image
               key={i}
@@ -130,7 +137,7 @@ export default function Hero() {
               height={asset.main.height}
               style={{ zIndex }}
               className={cn(
-                'absolute bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
+                'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
               )}
             />
           );
