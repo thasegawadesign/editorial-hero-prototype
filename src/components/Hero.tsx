@@ -63,7 +63,7 @@ export default function Hero() {
   }, [order]);
 
   useEffect(() => {
-    const intervalMs = 5000; // 5秒ごとに循環
+    const intervalMs = 6000; // 6秒ごとに循環
     if (order.length <= 1) return;
 
     const id = window.setInterval(() => {
@@ -117,13 +117,13 @@ export default function Hero() {
                 style={{ zIndex }}
                 className={cn(
                   'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
-                  isFront && 'hero-curtain-reveal',
+                  isFront && 'hero-curtain-reveal-main',
                 )}
               />
               <div
                 className={cn(
                   'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
-                  isFront && 'hero-curtain-reveal',
+                  isFront && 'hero-curtain-reveal-main',
                 )}
               />
             </Fragment>
@@ -142,7 +142,7 @@ export default function Hero() {
               style={{ zIndex }}
               className={cn(
                 'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
-                isFront && 'hero-curtain-reveal',
+                isFront && 'hero-curtain-reveal-sub',
               )}
             />
           );
