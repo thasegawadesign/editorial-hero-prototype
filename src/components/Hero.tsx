@@ -79,7 +79,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className={cn('relative w-full h-screen overflow-x-hidden')}>
+      <div className={cn('relative w-full h-screen overflow-hidden')}>
         <h1
           className={cn(
             'absolute top-[4vw] inset-x-0 mx-auto w-[94vw] lg:top-[1vw] lg:w-[98vw] h-fit z-20',
