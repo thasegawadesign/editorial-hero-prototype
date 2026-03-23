@@ -26,8 +26,8 @@
   -webkit-clip-path: inset(100% 0 0 0);
   transform-origin: center;
   animation:
-    heroCurtainReveal 1600ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroImageAppearScale 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    heroCurtainReveal 1600ms cubic-bezier(0.4, 0, 0.2, 1) both,
+    heroImageAppearScale 1600ms cubic-bezier(0.4, 0, 0.2, 1) both;
   will-change: clip-path, transform;
 }
 
@@ -36,8 +36,8 @@
   -webkit-clip-path: inset(100% 0 0 0);
   transform-origin: center;
   animation:
-    heroCurtainReveal 1600ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroImageAppearScale 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    heroCurtainReveal 1600ms cubic-bezier(0.4, 0, 0.2, 1) both,
+    heroImageAppearScale 1600ms cubic-bezier(0.4, 0, 0.2, 1) both;
   /* sub を先にめくる */
   animation-delay: 0ms, 0ms;
   will-change: clip-path, transform;
@@ -48,8 +48,8 @@
   -webkit-clip-path: inset(100% 0 0 0);
   transform-origin: center;
   animation:
-    heroCurtainReveal 1600ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroImageAppearScale 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    heroCurtainReveal 1600ms cubic-bezier(0.4, 0, 0.2, 1) both,
+    heroImageAppearScale 1600ms cubic-bezier(0.4, 0, 0.2, 1) both;
   /* main を後追いでめくる */
   animation-delay: 120ms, 120ms;
   will-change: clip-path, transform;
