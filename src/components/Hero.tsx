@@ -94,10 +94,12 @@ export default function Hero() {
 
   return (
     <>
-      <div className={cn('relative w-full h-screen overflow-hidden')}>
+      <div
+        className={cn('relative w-full h-screen overflow-hidden flex flex-col')}
+      >
         <h1
           className={cn(
-            'absolute top-[4vw] inset-x-0 mx-auto w-[94vw] lg:top-[1vw] lg:w-[98vw] h-fit z-20',
+            'relative top-[4vw] mx-auto w-[94vw] lg:top-[1vw] lg:w-[98vw] h-fit z-20',
           )}
         >
           <Image
@@ -113,7 +115,7 @@ export default function Hero() {
         </h1>
         <p
           className={cn(
-            'absolute bottom-[54vw] text-white left-0 text-[clamp(1.4rem,8px+4vw,6rem)] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] font-light tracking-wide right-0 mx-auto w-[92vw] lg:w-[34vw] lg:leading-[1.2] lg:ml-[1vw] lg:bottom-32 h-fit z-20',
+            'relative mt-auto mb-[54vw] text-white text-[clamp(1.4rem,8px+4vw,6rem)] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] font-light tracking-wide mx-auto w-[92vw] lg:w-[34vw] lg:leading-[1.2] lg:ml-[1vw] lg:mb-34 h-fit z-20',
           )}
         >
           Our architecture studio designs one-of-a-kind residences in rare
