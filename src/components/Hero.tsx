@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type Asset = {
   main: {
@@ -123,28 +123,26 @@ export default function Hero() {
           const zIndex = zIndexByAssetIndex.get(i) ?? 1;
           const isFront = i === frontAssetIndex;
           return (
-            <Fragment key={i}>
-              <Image
-                src={asset.main.src}
-                alt={asset.main.alt}
-                width={asset.main.width}
-                height={asset.main.height}
-                style={{ zIndex }}
-                priority={i === 0}
-                className={cn(
-                  'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
-                  isFront && isPlaying && 'hero-curtain-reveal-main',
-                )}
-              />
-              <div
-                className={cn(
-                  'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
-                  isFront && isPlaying && 'hero-curtain-reveal-main',
-                )}
-              />
-            </Fragment>
+            <Image
+              key={i}
+              src={asset.main.src}
+              alt={asset.main.alt}
+              width={asset.main.width}
+              height={asset.main.height}
+              style={{ zIndex }}
+              priority={i === 0}
+              className={cn(
+                'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
+                isFront && isPlaying && 'hero-curtain-reveal-main',
+              )}
+            />
           );
         })}
+        <div
+          className={cn(
+            'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
+          )}
+        />
         {assets.map((asset, i) => {
           const zIndex = (zIndexByAssetIndex.get(i) ?? 1) + 20;
           const isFront = i === frontAssetIndex;
