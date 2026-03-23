@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 
 type Asset = {
   main: {
@@ -52,6 +52,7 @@ const assets: Asset[] = [
 export default function Hero() {
   // z-index の積み順を循環させるための「前後関係」(背面 -> 手前) を保持する
   const [order, setOrder] = useState<number[]>(() => assets.map((_, i) => i));
+  const frontAssetIndex = order[order.length - 1] ?? 0;
 
   const zIndexByAssetIndex = useMemo(() => {
     const map = new Map<number, number>();
@@ -105,10 +106,10 @@ export default function Hero() {
         </p>
         {assets.map((asset, i) => {
           const zIndex = zIndexByAssetIndex.get(i) ?? 1;
+          const isFront = i === frontAssetIndex;
           return (
-            <>
+            <Fragment key={i}>
               <Image
-                key={i}
                 src={asset.main.src}
                 alt={asset.main.alt}
                 width={asset.main.width}
@@ -116,18 +117,21 @@ export default function Hero() {
                 style={{ zIndex }}
                 className={cn(
                   'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
+                  isFront && 'hero-curtain-reveal',
                 )}
               />
               <div
                 className={cn(
                   'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
+                  isFront && 'hero-curtain-reveal',
                 )}
               />
-            </>
+            </Fragment>
           );
         })}
         {assets.map((asset, i) => {
           const zIndex = (zIndexByAssetIndex.get(i) ?? 1) + 20;
+          const isFront = i === frontAssetIndex;
           return (
             <Image
               key={i}
@@ -138,6 +142,7 @@ export default function Hero() {
               style={{ zIndex }}
               className={cn(
                 'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
+                isFront && 'hero-curtain-reveal',
               )}
             />
           );
