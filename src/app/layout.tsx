@@ -7,7 +7,8 @@ const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   title: 'Editorial Hero Prototype',
-  description: 'Editorial Hero Prototype',
+  description:
+    'A magazine-style hero prototype featuring an asymmetric layout with two overlapping images of different sizes and a smooth curtain-reveal animation.',
   verification: {
     google: googleSiteVerification,
   },
