@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 
 type Asset = {
   main: {
@@ -21,28 +21,28 @@ type Asset = {
 const assets: Asset[] = [
   {
     main: {
-      src: '/hero-01-main.avif',
-      alt: 'main',
+      src: "/hero-01-main.avif",
+      alt: "main",
       width: 1440,
       height: 720,
     },
     sub: {
-      src: '/hero-01-sub.avif',
-      alt: 'sub',
+      src: "/hero-01-sub.avif",
+      alt: "sub",
       width: 460,
       height: 260,
     },
   },
   {
     main: {
-      src: '/hero-02-main.avif',
-      alt: 'main',
+      src: "/hero-02-main.avif",
+      alt: "main",
       width: 1440,
       height: 720,
     },
     sub: {
-      src: '/hero-02-sub.avif',
-      alt: 'sub',
+      src: "/hero-02-sub.avif",
+      alt: "sub",
       width: 460,
       height: 260,
     },
@@ -95,11 +95,11 @@ export default function Hero() {
   return (
     <>
       <div
-        className={cn('relative w-full h-screen overflow-hidden flex flex-col')}
+        className={cn("relative flex h-screen w-full flex-col overflow-hidden")}
       >
         <h1
           className={cn(
-            'relative top-[4vw] mx-auto w-[94vw] lg:top-[1vw] lg:w-[98vw] h-fit z-20',
+            "relative top-[4vw] z-20 mx-auto h-fit w-[94vw] lg:top-[1vw] lg:w-[98vw]",
           )}
         >
           <Image
@@ -109,13 +109,13 @@ export default function Hero() {
             height={720}
             priority
             className={cn(
-              'w-full h-fit object-contain select-none pointer-events-none',
+              "pointer-events-none h-fit w-full object-contain select-none",
             )}
           />
         </h1>
         <p
           className={cn(
-            'relative mt-auto mb-[54vw] text-white text-[clamp(1.4rem,8px+4vw,6rem)] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] font-light tracking-wide mx-auto w-[92vw] lg:w-[34vw] lg:leading-[1.2] lg:ml-[1vw] lg:mb-34 h-fit z-20',
+            "relative z-20 mx-auto mt-auto mb-[54vw] h-fit w-[92vw] text-[clamp(1.4rem,8px+4vw,6rem)] font-light tracking-tight text-white lg:mb-34 lg:ml-[1vw] lg:w-[34vw] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] lg:leading-[1.2]",
           )}
         >
           Our architecture studio designs one-of-a-kind residences in rare
@@ -134,15 +134,15 @@ export default function Hero() {
               style={{ zIndex }}
               priority={i === 0}
               className={cn(
-                'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
-                isFront && isPlaying && 'hero-curtain-reveal-main',
+                "pointer-events-none absolute inset-0 h-[92vh] w-full object-cover select-none lg:h-[88vh]",
+                isFront && isPlaying && "hero-curtain-reveal-main",
               )}
             />
           );
         })}
         <div
           className={cn(
-            'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
+            "pointer-events-none absolute inset-0 z-10 h-[92vh] w-full bg-black/30 select-none lg:h-[88vh]",
           )}
         />
         {assets.map((asset, i) => {
@@ -157,8 +157,8 @@ export default function Hero() {
               height={asset.sub.height}
               style={{ zIndex }}
               className={cn(
-                'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
-                isFront && isPlaying && 'hero-curtain-reveal-sub',
+                "pointer-events-none absolute right-0 bottom-0 left-0 z-20 mx-auto h-fit w-11/12 object-cover select-none lg:mr-[9vw] lg:w-4/12",
+                isFront && isPlaying && "hero-curtain-reveal-sub",
               )}
             />
           );
