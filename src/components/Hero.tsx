@@ -53,6 +53,7 @@ export default function Hero() {
   // z-index の積み順を循環させるための「前後関係」(背面 -> 手前) を保持する
   const [order, setOrder] = useState<number[]>(() => assets.map((_, i) => i));
   const frontAssetIndex = order[order.length - 1] ?? 0;
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const zIndexByAssetIndex = useMemo(() => {
     const map = new Map<number, number>();
@@ -64,17 +65,31 @@ export default function Hero() {
 
   useEffect(() => {
     const intervalMs = 6000; // 6秒ごとに循環
+    const initialDelayMs = 3000; // 最初だけ +3秒待つ
     if (order.length <= 1) return;
 
-    const id = window.setInterval(() => {
+    let intervalId: number | undefined;
+    const timeoutId = window.setTimeout(() => {
+      setIsPlaying(true);
+      // 最初の切り替えを initialDelayMs 後に1回だけ先行させる
       setOrder((prev) => {
         if (prev.length <= 1) return prev;
         const [first, ...rest] = prev;
         return [...rest, first];
       });
-    }, intervalMs);
+      intervalId = window.setInterval(() => {
+        setOrder((prev) => {
+          if (prev.length <= 1) return prev;
+          const [first, ...rest] = prev;
+          return [...rest, first];
+        });
+      }, intervalMs);
+    }, initialDelayMs);
 
-    return () => window.clearInterval(id);
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (intervalId) window.clearInterval(intervalId);
+    };
   }, [order.length]);
 
   return (
@@ -117,13 +132,13 @@ export default function Hero() {
                 style={{ zIndex }}
                 className={cn(
                   'absolute inset-0 w-full object-cover h-[92vh] lg:h-[88vh] select-none pointer-events-none',
-                  isFront && 'hero-curtain-reveal-main',
+                  isFront && isPlaying && 'hero-curtain-reveal-main',
                 )}
               />
               <div
                 className={cn(
                   'absolute inset-0 h-[92vh] lg:h-[88vh] w-full bg-black/30 select-none pointer-events-none z-10',
-                  isFront && 'hero-curtain-reveal-main',
+                  isFront && isPlaying && 'hero-curtain-reveal-main',
                 )}
               />
             </Fragment>
@@ -142,7 +157,7 @@ export default function Hero() {
               style={{ zIndex }}
               className={cn(
                 'absolute z-20 bottom-0 left-0 right-0 mx-auto select-none pointer-events-none lg:w-4/12 w-11/12 h-fit object-cover lg:mr-[9vw]',
-                isFront && 'hero-curtain-reveal-sub',
+                isFront && isPlaying && 'hero-curtain-reveal-sub',
               )}
             />
           );
