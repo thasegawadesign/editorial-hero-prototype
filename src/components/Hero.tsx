@@ -115,7 +115,7 @@ export default function Hero() {
         </h1>
         <p
           className={cn(
-            "relative z-20 mx-auto mt-auto mb-[54vw] h-fit w-[92vw] text-[clamp(1.4rem,8px+4vw,6rem)] font-light tracking-tight text-white lg:mb-34 lg:ml-[1vw] lg:w-[34vw] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] lg:leading-[1.2]",
+            "relative z-20 mx-auto mt-auto mb-[54vw] h-fit w-[92vw] text-[clamp(1.4rem,8px+4vw,6rem)] font-light tracking-tight text-white lg:mb-[clamp(4rem,14vh,10rem)] lg:ml-[1vw] lg:w-[34vw] lg:text-[clamp(1.4rem,8px+1.6vw,2.8rem)] lg:leading-[1.2]",
           )}
         >
           Our architecture studio designs one-of-a-kind residences in rare
