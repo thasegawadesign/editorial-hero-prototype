@@ -9,7 +9,7 @@
 ## 動作確認
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ブラウザで `http://localhost:3000` を開いてください。
