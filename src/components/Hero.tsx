@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Asset = {
   main: {
@@ -55,13 +55,10 @@ export default function Hero() {
   const frontAssetIndex = order[order.length - 1] ?? 0;
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const zIndexByAssetIndex = useMemo(() => {
-    const map = new Map<number, number>();
-    order.forEach((assetIndex, position) => {
-      map.set(assetIndex, position + 1);
-    });
-    return map;
-  }, [order]);
+  const zIndexByAssetIndex = new Map<number, number>();
+  order.forEach((assetIndex, position) => {
+    zIndexByAssetIndex.set(assetIndex, position + 1);
+  });
 
   useEffect(() => {
     const intervalMs = 6000; // 6秒ごとに循環
