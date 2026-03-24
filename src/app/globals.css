@@ -51,7 +51,7 @@
     heroCurtainReveal 1600ms cubic-bezier(0.4, 0, 0.2, 1) both,
     heroImageAppearScale 1600ms cubic-bezier(0.4, 0, 0.2, 1) both;
   /* main を後追いでめくる */
-  animation-delay: 120ms, 240ms;
+  animation-delay: 120ms, 360ms;
   will-change: clip-path, transform;
 }
 
