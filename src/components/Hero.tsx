@@ -125,19 +125,24 @@ export default function Hero() {
           const zIndex = zIndexByAssetIndex.get(i) ?? 1;
           const isFront = i === frontAssetIndex;
           return (
-            <Image
+            <div
               key={i}
-              src={asset.main.src}
-              alt={asset.main.alt}
-              width={asset.main.width}
-              height={asset.main.height}
               style={{ zIndex }}
-              priority={i === 0}
-              className={cn(
-                "pointer-events-none absolute inset-0 h-[92vh] w-full object-cover select-none lg:h-[88vh]",
-                isFront && isPlaying && "hero-curtain-reveal-main",
-              )}
-            />
+              className="absolute inset-0 h-[92vh] overflow-hidden lg:h-[88vh]"
+            >
+              <Image
+                key={i}
+                src={asset.main.src}
+                alt={asset.main.alt}
+                width={asset.main.width}
+                height={asset.main.height}
+                priority={i === 0}
+                className={cn(
+                  "pointer-events-none h-full w-full scale-110 object-cover select-none",
+                  isFront && isPlaying && "hero-curtain-reveal-main",
+                )}
+              />
+            </div>
           );
         })}
         <div
@@ -149,18 +154,22 @@ export default function Hero() {
           const zIndex = (zIndexByAssetIndex.get(i) ?? 1) + 20;
           const isFront = i === frontAssetIndex;
           return (
-            <Image
+            <div
               key={i}
-              src={asset.sub.src}
-              alt={asset.sub.alt}
-              width={asset.sub.width}
-              height={asset.sub.height}
               style={{ zIndex }}
-              className={cn(
-                "pointer-events-none absolute right-0 bottom-0 left-0 z-20 mx-auto h-fit w-11/12 object-cover select-none lg:mr-[9vw] lg:w-4/12",
-                isFront && isPlaying && "hero-curtain-reveal-sub",
-              )}
-            />
+              className="absolute right-0 bottom-0 left-0 z-20 mx-auto h-fit w-11/12 overflow-hidden lg:mr-[9vw] lg:w-4/12"
+            >
+              <Image
+                src={asset.sub.src}
+                alt={asset.sub.alt}
+                width={asset.sub.width}
+                height={asset.sub.height}
+                className={cn(
+                  "pointer-events-none h-full w-full scale-110 object-cover select-none",
+                  isFront && isPlaying && "hero-curtain-reveal-sub",
+                )}
+              />
+            </div>
           );
         })}
       </div>
