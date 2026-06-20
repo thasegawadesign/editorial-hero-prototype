@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
@@ -29,7 +30,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={lato.className}>{children}</body>
+      <body className={lato.className}>
+        {children}
+        {isProduction && <Analytics />}
+      </body>
       {isProduction && gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
